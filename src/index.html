@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Deck Builder</title>
+        <link rel="stylesheet" href="../assets/css/index.css">
+    </head>
+    <body>
+        <div class="main_body">
+            <div id="card_search_area">
+                <h1 id="main_title">Deck Builder</h1>
+                <div id="search_stuff">
+                    <label>Card name: </label>
+                    <input id="card_name" type="text">
+                    <button id="search">Search</button>
+                </div>
+                <div id="results"></div>
+                <script src="index.js"></script>
+            </div>
+            <div id="deck_area"></div>
+        </div>
+        <script>
+            const { save } = require('./save_script.js');
+            const { load } = require('./load_script.js');
+            const { export_deck } = require('./export_script.js');
+            const { ipcRenderer } = require('electron');
+            ipcRenderer.on('save', (event, arg) => {
+                save(arg);
+            });
+            ipcRenderer.on('load', (event, arg) => {
+                load(arg);
+            });
+            ipcRenderer.on('export', (event, arg) => {
+                export_deck(arg);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+/*
+      = element
+    # = id
+    . = class
+*/
+.imagecard {
+    position: absolute;
+    border-radius: 5px;
+    transition: .2s;
+}
+.imagecard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 0 3px #118ab2;
+}
+
+.imagecard:active {
+    transform: translateY(10px);
+    box-shadow: 0 0 0 3px #118ab2;
+    pointer-events: none;
+    transition: 0s;
+}
+
+
+html, body {
+	height: 100%;
+}
+
+.main_body {
+    display: flex;
+    height: 100%;
+    min-height: 100%;
+    border-radius: 5px;
+    background-color: #118ab2;
+}
+
+#card_search_area {
+    display: flex;
+    min-height: 100%;
+    max-width: 350px;
+    flex-direction: column;
+}
+
+#results {
+    flex: 1;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #073b4c;
+}
+
+.result_image {
+    margin: 5px;
+    border-radius: 5px;
+}
+
+#deck_area {
+    flex: 100%;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #073b4c;
+}
+
+#main_title{
+    text-align: center;
+}
+
+#search_stuff {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    height: 20px;
+}
+
+#card_name {
+    margin-left: 5px;
+    margin-right: 5px;
+}
