@@ -1,0 +1,13 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  testAction:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npn ci 
+      - run: npn test
