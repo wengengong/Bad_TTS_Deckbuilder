@@ -36,6 +36,7 @@ html, body {
 #card_search_area {
     display: flex;
     min-height: 100%;
+    width: 100%;
     max-width: 350px;
     flex-direction: column;
 }

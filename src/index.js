@@ -105,8 +105,8 @@ function dragElement(elmnt) {
   
     function closeDragElement() {
         // snap left-right
-        if (elmnt.offsetLeft < 360){
-            elmnt.style.left = elmnt.offsetLeft = 360 + "px";
+        if (elmnt.offsetLeft < 350){
+            elmnt.style.left = elmnt.offsetLeft = 350 + "px";
             console.log('out of bounds');
         } else {
             if (elmnt.offsetLeft % 100 > 49) {
