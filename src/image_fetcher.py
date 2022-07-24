@@ -5,7 +5,13 @@ from bs4 import BeautifulSoup
 name = input().strip()
 # search for that name and get the page
 #use verify = False to get around ssl error
-page = requests.get('https://gatherer.wizards.com/Pages/Search/Default.aspx?action=advanced&name=+['+ name +']', verify = False)
+
+url = 'https://gatherer.wizards.com/Pages/Search/Default.aspx?action=advanced&name='
+words = name.split()
+for word in words :
+    url = url + '+[' + word + ']'
+
+page = requests.get(url, verify = False)
 soup = BeautifulSoup(page.content, 'html.parser')
 
 # find images (probably a better way than nested ifs but im lazy)

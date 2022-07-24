@@ -17,6 +17,7 @@ searchbtn.addEventListener('click', function(event){
 
     // wait for result
     pyshell.on('message', function (message) {
+        console.log(message);
         // create cards (if any)
         // split return using NULL char
         const result = message.split(String.fromCharCode(0));
@@ -45,6 +46,15 @@ searchbtn.addEventListener('click', function(event){
         console.log('finished');
     });
 })
+
+// search when you hit enter in the text box
+const searchbox = document.getElementById('card_name')
+searchbox.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById('search').click();
+    }
+  });
 
 //add a new card to the deck area
 function add_card(event){

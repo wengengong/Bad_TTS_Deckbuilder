@@ -45,7 +45,8 @@ html, body {
 
 ::-webkit-scrollbar {
     background: #118ab2;
-    border-radius: 100vw;
+    border: #073b4c;
+    
     margin-block: 2px;
 }
 
@@ -57,7 +58,7 @@ html, body {
 
 #results {
     flex: 1;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #073b4c;
 }
 
@@ -67,7 +68,7 @@ html, body {
     flex: 1;
     margin: 10px;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #073b4c;
 }
 
