@@ -2,8 +2,8 @@ const { app, BrowserWindow, Menu, dialog } = require('electron');
 
 function createWindow () {
   const win = new BrowserWindow({
-    width: 1000,
-    height: 600,
+    width: 1500,
+    height: 800,
     webPreferences: {
       nodeIntegration: true
     }
@@ -56,6 +56,7 @@ function createWindow () {
   Menu.setApplicationMenu(menu);
 
   win.loadFile('src/index.html');
+
   win.webContents.openDevTools();
 }
 

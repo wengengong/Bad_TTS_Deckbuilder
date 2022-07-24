@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 
 # get search name
 name = input().strip()
-
 # search for that name and get the page
-page = requests.get('https://gatherer.wizards.com/Pages/Search/Default.aspx?action=advanced&name=+['+ name +']')
+#use verify = False to get around ssl error
+page = requests.get('https://gatherer.wizards.com/Pages/Search/Default.aspx?action=advanced&name=+['+ name +']', verify = False)
 soup = BeautifulSoup(page.content, 'html.parser')
 
 # find images (probably a better way than nested ifs but im lazy)

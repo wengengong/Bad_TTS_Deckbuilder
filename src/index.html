@@ -14,10 +14,14 @@
                     <input id="card_name" type="text">
                     <button id="search">Search</button>
                 </div>
-                <div id="results"></div>
+                <div id="results_scroll">
+                    <div id="results"></div>
+                </div>
                 <script src="index.js"></script>
             </div>
-            <div id="deck_area"></div>
+            <div id="deck_area_scroll">
+                <div id="deck_area"></div>
+            </div>
         </div>
         <script>
             const { save } = require('./save_script.js');

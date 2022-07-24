@@ -24,8 +24,8 @@ searchbtn.addEventListener('click', function(event){
         //make image
         var image = document.createElement('img');
         image.src = result[0];
-        image.width = 95;
-        image.height = 132;
+        image.width = 95*2;
+        image.height = 132*2;
         image.id = result[1];
         image.className = 'result_image';
 
@@ -52,8 +52,8 @@ function add_card(event){
     // creates a copy of the card
     var image = document.createElement('img');
     image.src = event.target.src;
-    image.width = 95;
-    image.height = 132;
+    image.width = 95*2;
+    image.height = 132*2;
     image.id = event.target.id;
     image.className = "imagecard";
     image.addEventListener('dblclick', remove_card);
