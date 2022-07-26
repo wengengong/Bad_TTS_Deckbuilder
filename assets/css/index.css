@@ -9,12 +9,12 @@
     transition: .2s;
 }
 .imagecard:hover {
-    transform: translateY(-10px);
+    /*transform: translateY(-10px);*/
     box-shadow: 0 0 0 3px #118ab2;
 }
 
 .imagecard:active {
-    transform: translateY(10px);
+    /*transform: translateY(10px);*/
     box-shadow: 0 0 0 3px #118ab2;
     pointer-events: none;
     transition: 0s;
@@ -46,7 +46,6 @@ html, body {
 ::-webkit-scrollbar {
     background: #118ab2;
     border: #073b4c;
-    
     margin-block: 2px;
 }
 
@@ -57,7 +56,10 @@ html, body {
 }
 
 #results {
-    flex: 1;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
     border-radius: 10px;
     background-color: #073b4c;
 }
@@ -73,6 +75,7 @@ html, body {
 }
 
 .result_image {
+
     margin: 5px;
     border-radius: 5px;
 }

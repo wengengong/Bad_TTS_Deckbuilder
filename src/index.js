@@ -66,14 +66,8 @@ function add_card(event){
     image.height = 132*2;
     image.id = event.target.id;
     image.className = "imagecard";
-    image.addEventListener('dblclick', remove_card);
     dragElement(image);
     document.getElementById('deck_area').appendChild(image);
-}
-
-// remove a card from the deck area
-function remove_card(event){
-    event.target.parentNode.removeChild(event.target);
 }
 
 /* 
@@ -86,17 +80,25 @@ function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
     elmnt.onmousedown = dragMouseDown;
-  
+
     function dragMouseDown(e) {
         // get event
         e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves
-        document.onmousemove = elementDrag;
+
+        //if ctrl is held remove the card
+        if (e.ctrlKey){
+            console.log('ctrl');
+            e.target.remove();
+        }
+        else {
+            e.preventDefault();
+            // get the mouse cursor position at startup
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves
+            document.onmousemove = elementDrag;
+        }
     }
   
     function elementDrag(e) {
