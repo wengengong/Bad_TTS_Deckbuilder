@@ -110,29 +110,27 @@ function dragElement(elmnt) {
         pos3 = e.clientX;
         pos4 = e.clientY;
         // set the element's new position
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        if (((elmnt.offsetTop - pos2) < 10)  || ((elmnt.offsetTop - pos2) > (window.innerHeight - elmnt.height - 10))) {
+            elmnt.style.top = (elmnt.offsetTop) + "px";
+        } else {
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        }
+
+        if (((elmnt.offsetLeft - pos1) < 350)  || ((elmnt.offsetLeft - pos1) > (window.innerWidth - elmnt.width - 10))) {
+            elmnt.style.left = (elmnt.offsetLeft) + "px";
+        } else {
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
         elmnt.style.zIndex = elmnt.offsetTop;
     }
   
     function closeDragElement() {
-        // snap left-right
-        if (elmnt.offsetLeft < 350){
-            elmnt.style.left = elmnt.offsetLeft = 350 + "px";
-            console.log('out of bounds');
-        } else {
-            if (elmnt.offsetLeft % 100 > 49) {
-                elmnt.style.left = elmnt.offsetLeft + (100 - (elmnt.offsetLeft % 100)) + "px";
-            } else {
-                elmnt.style.left = elmnt.offsetLeft - (elmnt.offsetLeft % 100) + "px";
-            }
-        }
-        // snap up-down
-        if (elmnt.offsetTop % 30 > 14) {
-            elmnt.style.top = elmnt.offsetTop + (30 - (elmnt.offsetTop % 30)) + "px";
-        } else {
-            elmnt.style.top = elmnt.offsetTop - (elmnt.offsetTop % 30) + "px";
-        }
+        // snap left
+        elmnt.style.left = elmnt.offsetLeft - (elmnt.offsetLeft % 50) + "px";
+        // snap up
+        elmnt.style.top = elmnt.offsetTop - (elmnt.offsetTop % 30 - 10) + "px";
+        
         elmnt.style.zIndex = elmnt.offsetTop;
         // stop moving when mouse button is released
         document.onmouseup = null;
