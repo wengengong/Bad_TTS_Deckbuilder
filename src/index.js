@@ -87,10 +87,15 @@ function dragElement(elmnt) {
 
         //if ctrl is held remove the card
         if (e.ctrlKey){
-            console.log('ctrl');
             e.target.remove();
-        }
-        else {
+        } else if (e.shiftKey ){ //if shift is held clone the card, need to add out of bounds handling
+            console.log('shift');
+            var copy = e.target.cloneNode(true);
+            dragElement(copy);
+            copy.style.left = e.target.offsetLeft + 50 + "px";
+            copy.style.top = e.target.offsetTop + 30 + "px";
+            document.getElementById('deck_area').appendChild(copy);
+        } else {
             e.preventDefault();
             // get the mouse cursor position at startup
             pos3 = e.clientX;
