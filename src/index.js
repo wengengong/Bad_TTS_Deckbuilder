@@ -1,51 +1,43 @@
-let {PythonShell} = require('python-shell');
 const { dialog , BrowserWindow } = require('electron');
+
+//import { fetch_image } from './image_fetcher';
+var image_fetcher = require('./image_fetcher');
+
 
 const searchbtn = document.getElementById('search')
 searchbtn.addEventListener('click', function(event){
     // remove all old results
-    results = document.getElementsByClassName('result_image');
+    var results = document.getElementsByClassName('result_image');
     while(results[0]){
         results[0].parentNode.removeChild(results[0]);
     }
-    
-    // create new py-shell task
-    let pyshell = new PythonShell('src/image_fetcher.py');
 
-    // call python scrip to search for cards
-    pyshell.send(document.getElementById('card_name').value);
+    getsrcs();
+})
 
-    // wait for result
-    pyshell.on('message', function (message) {
-        console.log(message);
-        // create cards (if any)
-        // split return using NULL char
-        const result = message.split(String.fromCharCode(0));
-
-        //make image
+//get image src's
+async function getsrcs() {
+    const image_srcs = await image_fetcher.fetch_image(document.getElementById('card_name').value);
+    console.log(image_srcs);
+    //create new cards
+    image_srcs.forEach(image_src => {
         var image = document.createElement('img');
-        image.src = result[0];
+        image.src = image_src[0];
         image.width = 95*2;
         image.height = 132*2;
-        image.id = result[1];
+        image.id = image_src[1];
         image.className = 'result_image';
 
         // add event listener
         image.addEventListener('dblclick', add_card);
+
         // add card to deck area
         document.getElementById('results').appendChild(image);
-        console.log(message);
-        console.log('name: ' + result[1])
-    });
-    
-    // close the py-shell
-    pyshell.end(function (err,code,signal) {
-        if (err) throw err;
-        console.log('The exit code was: ' + code);
-        console.log('The exit signal was: ' + signal);
-        console.log('finished');
-    });
-})
+        console.log('added: ' + image_src[1])
+    }); 
+
+    console.log("finished");
+}
 
 // search when you hit enter in the text box
 const searchbox = document.getElementById('card_name')
