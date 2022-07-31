@@ -10,7 +10,7 @@ Because I was bored.
 
  - Electron for the front end because its easier to make things look good.
  - Web scrape the images from gatherer using node-fethch and cheerio.
-  -Lighter weight than puppeteer
+   -Lighter weight than puppeteer
  
 <h2>Issues</h2>
 
