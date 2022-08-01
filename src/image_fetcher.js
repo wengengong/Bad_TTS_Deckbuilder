@@ -5,6 +5,11 @@ const https = require('https');
 module.exports = {fetch_image} ;
 
 async function fetch_image(card_name){
+    var srcs = [];
+
+    if (card_name.trim() == "") {
+        return srcs;
+    };
     //form the url
     var url = "https://gatherer.wizards.com/Pages/Search/Default.aspx?action=advanced&name="
     var words = card_name.split(" ");
@@ -21,8 +26,7 @@ async function fetch_image(card_name){
     const res = await fetch(url, {agent: httpsAgent});
     const html = await res.text();
     const $ = cheerio.load(html);
-
-    var srcs = [];
+    
     $('img').each((i, img) => {
         if ($(img).attr('width') == '95') {
             const tempsrc = $(img).attr('src');

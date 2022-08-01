@@ -3,6 +3,13 @@
     # = id
     . = class
 */
+
+/*Ostrich Sans Heavy by Tyler Finck*/
+@font-face {
+    font-family: OstrichSansH;
+    src: url(../fonts/OstrichSans-Heavy.otf);
+}
+
 .imagecard {
     position: absolute;
     border-radius: 5px;
@@ -20,10 +27,34 @@
     transition: 0s;
 }
 
+#seach_stuff {
+    display: flex;
+    flex-direction: row;
+}
+
+#card_name {
+    width: 65%;
+}
+
+#search_lb{
+    align-self: left;
+}
+
+#search{
+    align-self: right;
+    border-radius: 100vw;
+    border: none;
+    outline: none;
+    background-color: #073b4c;
+    color: #118ab2;
+}
+
 
 html, body {
     height: 100%;
     margin: 0%;
+    font-family: OstrichSansH;
+    
 }
 
 .main_body {
@@ -31,8 +62,8 @@ html, body {
     flex-flow: row;
     height: 100%;
     min-height: 100%;
-    /*border-radius: 5px;*/
     background-color: #118ab2;
+    color: #073b4c;
 }
 
 #card_search_area {
